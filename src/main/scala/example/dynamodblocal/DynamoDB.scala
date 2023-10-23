@@ -23,7 +23,7 @@ object DynamoDB {
     config.CommonAwsConfig(
       region = None,
       credentialsProvider = StaticCredentialsProvider.create(AwsBasicCredentials.create("dummy", "dummy")),
-      endpointOverride =
+      endpointOverride = None,
       commonClientConfig = None
     )
   )
@@ -40,11 +40,11 @@ object DynamoDB {
     ZLayer.scoped(
       ZIO.acquireRelease(acquire =
         DynamoDBQuery
-          .createTable("student", KeySchema("email", "subject"), BillingMode.PayPerRequest)(
+          .createTable("student3", KeySchema("email", "subject"), BillingMode.PayPerRequest)(
             AttributeDefinition.attrDefnString("email"),
             AttributeDefinition.attrDefnString("subject")
           )
           .execute
-      )(release = _ => DynamoDBQuery.deleteTable("student").execute.orDie)
+      )(release = _ => DynamoDBQuery.deleteTable("student3").execute.orDie)
     )
 }

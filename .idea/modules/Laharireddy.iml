@@ -12,20 +12,22 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: scala-sdk-2.13.12" level="project" />
+    <orderEntry type="library" name="sbt: ch.qos.logback:logback-classic:1.2.10:jar" level="project" />
+    <orderEntry type="library" name="sbt: ch.qos.logback:logback-core:1.2.10:jar" level="project" />
     <orderEntry type="library" name="sbt: com.propensive:magnolia_2.13:0.17.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.propensive:mercator_2.13:0.2.1:jar" level="project" />
     <orderEntry type="library" name="sbt: commons-codec:commons-codec:1.15:jar" level="project" />
     <orderEntry type="library" name="sbt: commons-logging:commons-logging:1.2:jar" level="project" />
-    <orderEntry type="library" name="sbt: dev.zio:izumi-reflect-thirdparty-boopickle-shaded_2.13:2.3.8:jar" level="project" />
-    <orderEntry type="library" name="sbt: dev.zio:izumi-reflect_2.13:2.3.8:jar" level="project" />
+    <orderEntry type="library" name="sbt: dev.zio:izumi-reflect-thirdparty-boopickle-shaded_2.13:2.3.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: dev.zio:izumi-reflect_2.13:2.3.1:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-aws-core_2.13:5.20.42.1:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-aws-dynamodb_2.13:5.20.42.1:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-aws-netty_2.13:5.20.42.1:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-config_2.13:3.0.7:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-constraintless_2.13:0.3.2:jar" level="project" />
-    <orderEntry type="library" name="sbt: dev.zio:zio-dynamodb_2.13:0.2.11:jar" level="project" />
+    <orderEntry type="library" name="sbt: dev.zio:zio-dynamodb_2.13:0.2.12:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-http_2.13:3.0.0-RC1:jar" level="project" />
-    <orderEntry type="library" name="sbt: dev.zio:zio-internal-macros_2.13:2.0.18:jar" level="project" />
+    <orderEntry type="library" name="sbt: dev.zio:zio-internal-macros_2.13:2.0.13:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-interop-reactivestreams_2.13:2.0.1:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-json_2.13:0.3.0-RC9:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-mock_2.13:1.0.0-RC8:jar" level="project" />
@@ -35,10 +37,10 @@
     <orderEntry type="library" name="sbt: dev.zio:zio-schema-json_2.13:0.4.8:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-schema-macros_2.13:0.4.12:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.zio:zio-schema_2.13:0.4.12:jar" level="project" />
-    <orderEntry type="library" name="sbt: dev.zio:zio-stacktracer_2.13:2.0.18:jar" level="project" />
-    <orderEntry type="library" name="sbt: dev.zio:zio-streams_2.13:2.0.18:jar" level="project" />
-    <orderEntry type="library" name="sbt: dev.zio:zio-test_2.13:2.0.18:jar" level="project" />
-    <orderEntry type="library" name="sbt: dev.zio:zio_2.13:2.0.18:jar" level="project" />
+    <orderEntry type="library" name="sbt: dev.zio:zio-stacktracer_2.13:2.0.13:jar" level="project" />
+    <orderEntry type="library" name="sbt: dev.zio:zio-streams_2.13:2.0.13:jar" level="project" />
+    <orderEntry type="library" name="sbt: dev.zio:zio-test_2.13:2.0.13:jar" level="project" />
+    <orderEntry type="library" name="sbt: dev.zio:zio_2.13:2.0.13:jar" level="project" />
     <orderEntry type="library" name="sbt: io.netty.incubator:netty-incubator-transport-classes-io_uring:0.0.19.Final:jar" level="project" />
     <orderEntry type="library" name="sbt: io.netty.incubator:netty-incubator-transport-native-io_uring:0.0.19.Final:linux-x86_64:jar" level="project" />
     <orderEntry type="library" name="sbt: io.netty:netty-buffer:4.1.91.Final:jar" level="project" />
@@ -67,7 +69,7 @@
     <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-collection-compat_2.13:2.9.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.12:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.13.12:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.slf4j:slf4j-api:1.7.30:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.slf4j:slf4j-api:1.7.32:jar" level="project" />
     <orderEntry type="library" name="sbt: software.amazon.awssdk:annotations:2.20.42:jar" level="project" />
     <orderEntry type="library" name="sbt: software.amazon.awssdk:apache-client:2.20.42:jar" level="project" />
     <orderEntry type="library" name="sbt: software.amazon.awssdk:auth:2.20.42:jar" level="project" />

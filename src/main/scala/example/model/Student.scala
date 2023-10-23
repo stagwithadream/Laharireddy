@@ -83,12 +83,11 @@ object Student {
     Student.email.partitionKey === email && Student.subject.sortKey === subject
 
 
-
   val enrolDate  = Instant.parse("2021-03-20T01:39:33Z")
   val enrolDate2 = Instant.parse("2022-03-20T01:39:33Z")
 
   val avi  = Student(
-    email = "avi@gmail.com",
+    email = "avi3@gmail.com",
     subject = "maths",
     enrollmentDate = Some(enrolDate),
     payment = Payment.DebitCard,
@@ -100,7 +99,7 @@ object Student {
     groups = Set("group1", "group2")
   )
   val adam = Student(
-    email = "adam@gmail.com",
+    email = "adam3@gmail.com",
     subject = "english",
     enrollmentDate = Some(enrolDate),
     payment = Payment.CreditCard,

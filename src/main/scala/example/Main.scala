@@ -21,20 +21,20 @@ import zio.stream.ZStream
 import zio.{Console, ZIOAppDefault}
 
 object Main extends ZIOAppDefault {
-  private val program = for {
-    _ <- batchWriteFromStream(ZStream(avi, adam)) { student =>
-      put("student", student)
-    }.runDrain
-    _ <- put("student", avi.copy(payment = Payment.CreditCard)).execute
-  } yield ()
+//  private val program = for {
+//    _ <- batchWriteFromStream(ZStream(avi, adam)) { student =>
+//      put("student", student)
+//    }.runDrain
+//    _ <- put("student", avi.copy(payment = Payment.CreditCard)).execute
+//  } yield ()
 
   val app = ZIO
     .serviceWithZIO[CustomerApi](customerApi => Server.serve(customerApi. httpApp.withDefaultErrorResponse))
     .provide(
       Server.defaultWithPort(8080),
       CustomerApi.live,
-      dynamodb.DynamoDb.live,
-      DynamoDBExecutor.live
+      dynamoDBExecutorLayer,
+      studentTableLayer
     )
-  override def run = program.provide(dynamoDBExecutorLayer, studentTableLayer)
+  override def run: URIO[Any, ExitCode] = app.exitCode
 }
