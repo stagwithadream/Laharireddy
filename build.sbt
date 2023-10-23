@@ -11,10 +11,7 @@ lazy val root = (project in file("."))
       "dev.zio" %% "zio-http" % "3.0.0-RC2",
       "dev.zio" %% "zio-dynamodb" % "0.2.12",
       "ch.qos.logback" % "logback-classic" % "1.2.10",
-      "dev.zio" %% "zio-interop-cats" % "3.1.1.0",
-      "io.circe" %% "circe-core" % "0.14.6",
-      "io.circe" %% "circe-generic" % "0.14.6",
-      "io.circe" %% "circe-parser" % "0.14.6",
+      "dev.zio" %% "zio-interop-cats" % "3.1.1.0"
     ),
     testFrameworks += new TestFramework("zio. test.sbt.ZTestFramework")
   )

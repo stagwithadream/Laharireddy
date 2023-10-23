@@ -1,5 +1,6 @@
 package example.http
 
+import example.dynamodblocal.DynamoDB.dynamoDBExecutorLayer
 import example.model.CustomerBody
 import zio._
 import zio.dynamodb.DynamoDBExecutor
@@ -14,15 +15,11 @@ import example.model.CustomerBody._
 import example.repository.CustomerRepository
 
 // Create a concrete implementation of CustomerApi
-case class CustomerApiLive(dynamoDbExecutorLayer: ZLayer[Any, Throwable, DynamoDBExecutor]) extends CustomerApi {
+case class CustomerApiLive(customerRepo:CustomerRepository) extends CustomerApi {
   override def httpApp: Http[Any, Throwable, Request, Response] = Http.collectZIO[Request] {
     case Method.GET -> Root / "status" => ZIO.succeed(Response.text("Server Running: CustomerApiLive Active"))
-    case Method.GET -> Root / "name" / "myname" => ZIO.succeed(Response.text("Banana"))
-    case Method.POST -> Root / "students" =>
-      createStudent()
-        .provide(dynamoDbExecutorLayer)
-        .catchAll(err => ZIO.succeed(Response.text(s"Error: ${err.getMessage}")))
-    case req @ Method.POST -> Root / "customer" =>
+
+    case req @ Method.PUT -> Root / "customer" =>
       req.body.asString.map(_.fromJson[CustomerBody]).flatMap {
         case Left(e) =>
           ZIO
@@ -31,42 +28,58 @@ case class CustomerApiLive(dynamoDbExecutorLayer: ZLayer[Any, Throwable, DynamoD
               Response.status(BadRequest),
             )
         case Right(customerBody) =>
-          CustomerRepository.createCustomer(Customer(
+          customerRepo.createCustomer(Customer(
               customerBody.name,
-              customerBody.age,
               customerBody.email,
               customerBody.phoneNumber,
+              customerBody.age,
               customerBody.phoneWork
             ))
-            .provide(dynamoDbExecutorLayer)
+            .provide(dynamoDBExecutorLayer)
             .catchAll(err => ZIO.succeed(Response.text(s"Error: ${err.getMessage}")))
+
       }
 
+    case req @ Method.GET -> Root / "customer" / id =>
+      customerRepo.getCustomer(id)
+        .provide(dynamoDBExecutorLayer)
+        .foldZIO(
+        failure =>
+          ZIO
+            .logErrorCause(s"Failed to read customer", Cause.fail(failure))
+            .as(Response.status(Status.NotFound)),
+        customer => customer match{
+          case Some(customer) => ZIO.logInfo(s"customer read: $id").as(Response.json(customer.toJson))
+          case None => ZIO.succeed(Response.text("Customer not found"))
+        }
+      )
+
+    case Method.GET -> Root / "customers" =>
+      customerRepo.getAllCustomers()
+      .provide(dynamoDBExecutorLayer)
+        .foldZIO(
+          failure =>
+            ZIO
+              .logErrorCause(s"Failed to read customer", Cause.fail(failure))
+              .as(Response.status(Status.NotFound)),
+          customerIterator => {
+            val customerList = customerIterator.toList
+            ZIO.succeed(Response.json(customerList.toJson))
+          }
+        )
+
+    case Method.DELETE -> Root / "customer" / id =>
+      customerRepo.deleteCustomer(id)
+      .provide(dynamoDBExecutorLayer)
+      .foldZIO(
+        failure =>
+          ZIO
+            .logErrorCause(s"Failed to read customer", Cause.fail(failure))
+            .as(Response.status(Status.NotFound)),
+        customer => ZIO.logInfo(s"customer read: $id").as(customer)
+
+      )
+
 }
 
-  //  def createStudent(): ZIO[DynamoDBExecutor, Response, Response] =
-  //    (for {
-  //      _ <- batchWriteFromStream(ZStream(avi, adam)) { student =>
-  //        put("student", student)
-  //      }.runDrain
-  //      _ <- put("student", avi.copy(payment = Payment.CreditCard)).execute
-  //      _ <- batchReadFromStream("student", ZStream(avi, adam))(s => primaryKey(s.email, s.subject))
-  //        .tap(errorOrStudent => Console.printLine(s"student=$errorOrStudent"))
-  //        .runDrain
-  //    } yield Response.text("Student created successfully"))
-  //      .catchAll(error => ZIO.succeed(Response.text(s"Error creating student: ${error.getMessage}")))
-
-
-  //
-
-  override def createStudent(): ZIO[DynamoDBExecutor, Throwable, Response] = {
-    val studentLogic: ZIO[DynamoDBExecutor, Throwable, Unit] = for {
-      _ <- (putItem("table1", Item("id" -> 5, "name" -> "name1")) zip putItem(
-        "table1",
-        Item("id" -> 6, "name" -> "name2")
-      )).execute
-    } yield ()
-
-    studentLogic.map(_ => Response.text("Students created successfully"))
-}
 }

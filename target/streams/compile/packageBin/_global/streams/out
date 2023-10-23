@@ -8,8 +8,14 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository[0m
 [0m[[0m[0mdebug[0m] [0m[0m	example/repository/CustomerRepository$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository/CustomerRepository$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/repository/CustomerRepositoryLive$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository/CustomerRepositoryLive$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/repository/CustomerRepositoryLive.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository/CustomerRepositoryLive.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	example/repository/CustomerRepository.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository/CustomerRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/repository/CustomerRepositoryLive$$anonfun$$nestedInanonfun$getAllCustomers$1$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository/CustomerRepositoryLive$$anonfun$$nestedInanonfun$getAllCustomers$1$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	example/dynamodblocal[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/dynamodblocal[0m
 [0m[[0m[0mdebug[0m] [0m[0m	example/dynamodblocal/DynamoDB$.class[0m
@@ -46,6 +52,8 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/model/CustomerBody$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	example/model/Customer$$anon$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/model/Customer$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/repository 2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository 2[0m
 [0m[[0m[0mdebug[0m] [0m[0m	example/Main.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/Main.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

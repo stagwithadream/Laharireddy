@@ -1,24 +1,27 @@
 package example.repository
 
-import zio.ZIO
+import example.dynamodblocal.DynamoDB.dynamoDBExecutorLayer
+import zio.{ZIO, ZLayer}
 import zio.dynamodb.DynamoDBQuery.putItem
 import zio.dynamodb.{DynamoDBExecutor, Item}
 import zio.http.Response
 import example.model.Customer
 
-object CustomerRepository {
-  def createCustomer(customer: Customer): ZIO[DynamoDBExecutor, Throwable, Response] = {
-    val studentLogic: ZIO[DynamoDBExecutor, Throwable, Unit] = for {
-      _ <- putItem("customer", Item(
-        "id" -> customer._id,
-        "name" -> customer.name,
-        "age" -> customer.age,
-      "phone" -> customer.phoneNumber,
-      "email" -> customer.email,
-        "phoneWork" -> customer.phoneWork)).execute
-    } yield ()
-
-    studentLogic.map(_ => Response.text("Customer created successfully"))
-  }
+trait CustomerRepository{
+  def createCustomer(customer: Customer):ZIO[DynamoDBExecutor, Throwable, Response]
+  def getCustomer(id: String):ZIO[DynamoDBExecutor, Throwable, Option[Customer]]
+  def getAllCustomers():ZIO[DynamoDBExecutor, Throwable, Iterator[Customer]]
+  def deleteCustomer(id: String):ZIO[DynamoDBExecutor, Throwable, Response]
 
 }
+
+
+object CustomerRepository {
+  lazy val live: ZLayer[DynamoDBExecutor, Nothing, CustomerRepository] = ZLayer.fromFunction { dynamoDBExecutorLayer =>
+    CustomerRepositoryLive(dynamoDBExecutorLayer)
+  }
+}
+
+
+
+

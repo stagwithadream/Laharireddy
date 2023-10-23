@@ -1,34 +1,51 @@
 package example.model
 
 import scala.util.Try
-
 import zio.json.{DeriveJsonDecoder, DeriveJsonEncoder, JsonDecoder, JsonEncoder}
 
+import scala.annotation.tailrec
+
 case class Customer(
-                     _id: String,
                      name: String,
                      age: Int,
                      email: String,
                      phoneNumber: String,
-                     phoneWork: Option[String]
+                     phoneWork: Option[String],
+                     _id: String
                    )
 
 object Customer {
   def apply(
              name: String,
-             age: Int,
              email: String,
              phoneNumber: String,
-             workNumber: Option[String]
-           ): Customer = Customer(java.util.UUID.randomUUID.toString, name, age, email, phoneNumber, workNumber)
+             age: Int,
+             workNumber: Option[String] = None,
+             id: Option[String] = None
+           ): Customer = {
+        val actualId = id.getOrElse(java.util.UUID.randomUUID.toString)
+        Customer(name, age, email, phoneNumber, workNumber, actualId)
+  }
+
+  def fromDetails(
+                   name: String,
+                   email: String,
+                   phoneNumber: String,
+                   age: Int,
+                   workNumber: Option[String] = None,
+                   id: Option[String] = None
+                 ): Customer = {
+    val actualId = id.getOrElse(java.util.UUID.randomUUID.toString)
+    Customer(name, age, email, phoneNumber, workNumber, actualId)
+  }
 
   object FieldNames {
-    def name        = "name"
-    def age         = "age"
-    def id          = "_id"
-    def email       = "email"
-    def phoneWork   = "phoneWork"
-    def phoneNumber = "phoneNumber"
+    val name        = "name"
+    val age         = "age"
+    val id          = "_id"
+    val email       = "email"
+    val phoneWork   = "phoneWork"
+    val phoneNumber = "phoneNumber"
   }
 
 

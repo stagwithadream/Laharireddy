@@ -15,6 +15,7 @@ import zio.dynamodb.DynamoDBQuery.put
 import zio.dynamodb._
 import example.dynamodblocal.DynamoDB._
 import example.model._
+import example.repository.CustomerRepository
 import zio.stream.ZStream
 import zio.{Console, ZIOAppDefault}
 
@@ -25,7 +26,9 @@ object Main extends ZIOAppDefault {
     .provide(
       Server.defaultWithPort(8080),
       CustomerApi.live,
-      dynamoDBExecutorLayer
+      dynamoDBExecutorLayer,
+      CustomerRepository.live,
+
     )
   override def run: URIO[Any, ExitCode] = app.exitCode
 }
