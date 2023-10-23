@@ -47,4 +47,12 @@ object DynamoDB {
           .execute
       )(release = _ => DynamoDBQuery.deleteTable("student3").execute.orDie)
     )
+
+  def createTable(name: String, hashKey: String, sortKey: String) =
+    DynamoDBQuery
+      .createTable(name, KeySchema(hashKey,sortKey), BillingMode.PayPerRequest)(
+        AttributeDefinition.attrDefnString(hashKey),
+        AttributeDefinition.attrDefnString(sortKey)
+      )
+      .execute
 }

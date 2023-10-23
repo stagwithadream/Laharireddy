@@ -14,27 +14,18 @@ import zio.dynamodb.ProjectionExpression
 import zio.dynamodb.DynamoDBQuery.put
 import zio.dynamodb._
 import example.dynamodblocal.DynamoDB._
-import example.dynamodblocal.StudentZioDynamoDBExample.program
-import example.model.Student._
 import example.model._
 import zio.stream.ZStream
 import zio.{Console, ZIOAppDefault}
 
 object Main extends ZIOAppDefault {
-//  private val program = for {
-//    _ <- batchWriteFromStream(ZStream(avi, adam)) { student =>
-//      put("student", student)
-//    }.runDrain
-//    _ <- put("student", avi.copy(payment = Payment.CreditCard)).execute
-//  } yield ()
 
   val app = ZIO
     .serviceWithZIO[CustomerApi](customerApi => Server.serve(customerApi. httpApp.withDefaultErrorResponse))
     .provide(
       Server.defaultWithPort(8080),
       CustomerApi.live,
-      dynamoDBExecutorLayer,
-      studentTableLayer
+      dynamoDBExecutorLayer
     )
   override def run: URIO[Any, ExitCode] = app.exitCode
 }
