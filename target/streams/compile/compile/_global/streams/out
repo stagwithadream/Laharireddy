@@ -1,0 +1,15 @@
+[0m[[0m[33mwarn[0m] [0m[0m/Users/npnl/Desktop/Laharireddy/src/main/scala/example/Main.scala:33:13: [0m
+[0m[[0m[33mwarn[0m] [0m[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m──── ZLAYER WARNING ──────────────────────────────────────────────────[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m [1mYou have provided more than is required.[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m You may remove the following [1m2 layers[0m:[0m
+[0m[[0m[33mwarn[0m] [0m[0m   [0m
+[0m[[0m[33mwarn[0m] [0m[0m   [2m1.[0m [36mDynamoDb.live[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m   [2m2.[0m [36mDynamoDBExecutor.live[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m  [0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m──────────────────────────────────────────────────────────────────────[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m    .provide([0m
+[0m[[0m[33mwarn[0m] [0m[0m            ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
