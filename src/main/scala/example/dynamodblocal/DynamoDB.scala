@@ -36,23 +36,5 @@ object DynamoDB {
 
   val dynamoDBExecutorLayer = dynamoDbLayer >>> DynamoDBExecutor.live
 
-  val studentTableLayer: ZLayer[DynamoDBExecutor, Throwable, Unit] =
-    ZLayer.scoped(
-      ZIO.acquireRelease(acquire =
-        DynamoDBQuery
-          .createTable("student3", KeySchema("email", "subject"), BillingMode.PayPerRequest)(
-            AttributeDefinition.attrDefnString("email"),
-            AttributeDefinition.attrDefnString("subject")
-          )
-          .execute
-      )(release = _ => DynamoDBQuery.deleteTable("student3").execute.orDie)
-    )
 
-  def createTable(name: String, hashKey: String, sortKey: String) =
-    DynamoDBQuery
-      .createTable(name, KeySchema(hashKey,sortKey), BillingMode.PayPerRequest)(
-        AttributeDefinition.attrDefnString(hashKey),
-        AttributeDefinition.attrDefnString(sortKey)
-      )
-      .execute
 }

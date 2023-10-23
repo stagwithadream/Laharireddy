@@ -11,7 +11,7 @@ import example.model.Customer
 import zio.http.Status.{BadRequest, Created}
 import zio.json._
 import example.model.CustomerBody._
-
+import example.repository.CustomerRepository
 
 // Create a concrete implementation of CustomerApi
 case class CustomerApiLive(dynamoDbExecutorLayer: ZLayer[Any, Throwable, DynamoDBExecutor]) extends CustomerApi {
@@ -31,7 +31,7 @@ case class CustomerApiLive(dynamoDbExecutorLayer: ZLayer[Any, Throwable, DynamoD
               Response.status(BadRequest),
             )
         case Right(customerBody) =>
-          example.repository.Customer.createCustomer(example.model.Customer(
+          CustomerRepository.createCustomer(Customer(
               customerBody.name,
               customerBody.age,
               customerBody.email,

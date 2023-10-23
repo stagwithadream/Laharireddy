@@ -6,10 +6,10 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/Main$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	example/repository[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository[0m
-[0m[[0m[0mdebug[0m] [0m[0m	example/repository/Customer$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository/Customer$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	example/repository/Customer.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository/Customer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/repository/CustomerRepository$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository/CustomerRepository$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/repository/CustomerRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/repository/CustomerRepository.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	example/dynamodblocal[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/npnl/Desktop/Laharireddy/target/scala-2.13/classes/example/dynamodblocal[0m
 [0m[[0m[0mdebug[0m] [0m[0m	example/dynamodblocal/DynamoDB$.class[0m
